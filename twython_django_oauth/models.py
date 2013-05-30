@@ -13,3 +13,6 @@ class TwitterProfile(models.Model):
     oauth_secret = models.CharField(max_length=200)
     screen_name = models.CharField(max_length=200)
     twitter_user_id = models.IntegerField(unique=True)
+
+    def __unicode__(self):
+        return self.screen_name
