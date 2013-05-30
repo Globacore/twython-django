@@ -27,7 +27,7 @@ setup(
 	author = 'Ryan McGrath',
 	author_email = 'ryan@venodesigns.net',
 	license = 'MIT License',
-	url = 'http://github.com/ryanmcgrath/twython-django/tree/master',
+	url = 'https://github.com/Globacore/twython-django.git',
 	keywords = 'Django integration for twython',
 	description = 'An easy (and up to date) way to access Twitter data with Python.',
 	long_description = open('README.markdown').read(),

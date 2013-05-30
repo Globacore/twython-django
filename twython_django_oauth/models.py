@@ -7,6 +7,6 @@ class TwitterProfile(models.Model):
 		oauth_secret in relation to a user. Adapt this if you have a current
 		setup, there's really nothing special going on here.
 	"""
-	user = models.OneToOneField(User)
+	user = models.ForeignKey(User)
 	oauth_token = models.CharField(max_length = 200)
 	oauth_secret = models.CharField(max_length = 200)

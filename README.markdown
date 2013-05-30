@@ -1,5 +1,7 @@
 Twython-Django (An example Django Python Twitter OAuth Application, using Twython)
 =========================================================================================
+This fork allows you to associate multiple Twitter accounts with the same user.
+
 OAuth is an annoying specification to work with. Twitter has an awesome and somewhat unique
 real time data stream, though, and it'd be a shame to miss out on that stuff because of the warts
 of a specification.
@@ -18,7 +20,7 @@ Twython - the Python Twitter API wrapper of choice.
 
 ...or, you can clone the repo and install it the old fashioned way.
 
-    git clone https://ryanmcgrath@github.com/ryanmcgrath/twython.git  
+    git clone https://github.com/Globacore/twython-django.git  
     cd twython
     sudo python setup.py install  
 
@@ -35,7 +37,7 @@ Twython also requires the (most excellent) OAuth2 library for handling OAuth tok
 Installation
 -----------------------------------------------------------------------------------------------------
 
-pip install git+http://github.com/ryanmcgrath/twython-django.git
+pip install git+https://github.com/Globacore/twython-django.git
 
 Add "twython_django_oauth" to your "INSTALLED_APPS" in your settings.py file. If you wish to use the example
 template, feel free to copy that over as well.
