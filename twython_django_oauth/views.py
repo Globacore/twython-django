@@ -62,28 +62,22 @@ def thanks(request, redirect_url=settings.LOGIN_REDIRECT_URL):
 
     # Retrieve the tokens we want...
     authorized_tokens = twitter.get_authorized_tokens(request.GET['oauth_verifier'])
+    user_id = int(authorized_tokens['user_id'])
 
-    # If they already exist, grab them, login and redirect to a page displaying stuff.
     try:
-        user = request.user  # User.objects.get(username = authorized_tokens['screen_name'])
-    #except User.DoesNotExist:
-        # We mock a creation here; no email, password is just the token, etc.
-        #user = User.objects.create_user(authorized_tokens['screen_name'], "fjdsfn@jfndjfn.com", authorized_tokens['oauth_token_secret'])
-        profile = TwitterProfile()
-        profile.user = user
+        profile = TwitterProfile.objects.get(user_id=user_id)
         profile.oauth_token = authorized_tokens['oauth_token']
         profile.oauth_secret = authorized_tokens['oauth_token_secret']
-
-        print 'authorized_tokens[screen_name]: %s' % authorized_tokens['screen_name']
-        print 'authorized_tokens[user_id] %s' % authorized_tokens['user_id']
-
-        # profile.twitter_name = authorized_tokens['screen_name']
-        # profile.twitter_id = authorized_tokens['user_id']
+        profile.screen_name = authorized_tokens['screen_name']
         profile.save()
-        print 'saved profile?'
-    except:
-        print 'EXCEPTION'
-        # pass
+    except TwitterProfile.DoesNotExist:
+        profile = TwitterProfile()
+        profile.user = request.user
+        profile.oauth_token = authorized_tokens['oauth_token']
+        profile.oauth_secret = authorized_tokens['oauth_token_secret']
+        profile.screen_name = authorized_tokens['screen_name']
+        profile.user_id = authorized_tokens['user_id']
+        profile.save()
 
     return HttpResponseRedirect(reverse(redirect_url))
 
