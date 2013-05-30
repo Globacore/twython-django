@@ -34,7 +34,7 @@ def begin_auth(request):
     )
 
     # Request an authorization url to send the user to...
-    auth_props = twitter.get_authentication_tokens()
+    auth_props = twitter.get_authentication_tokens(force_login=True)
 
     # Then send them over there, durh.
     request.session['request_token'] = auth_props
