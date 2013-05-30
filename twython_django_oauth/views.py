@@ -77,7 +77,7 @@ def thanks(request, redirect_url=settings.LOGIN_REDIRECT_URL):
     except:
         pass
 
-    return HttpResponseRedirect(redirect_url)
+    return HttpResponseRedirect(reverse(redirect_url))
 
 
 def user_timeline(request):
