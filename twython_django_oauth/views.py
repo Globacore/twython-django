@@ -65,7 +65,7 @@ def thanks(request, redirect_url=settings.LOGIN_REDIRECT_URL):
     user_id = int(authorized_tokens['user_id'])
 
     try:
-        profile = TwitterProfile.objects.get(user_id=user_id)
+        profile = TwitterProfile.objects.get(twitter_user_id=user_id)
         profile.oauth_token = authorized_tokens['oauth_token']
         profile.oauth_secret = authorized_tokens['oauth_token_secret']
         profile.screen_name = authorized_tokens['screen_name']
@@ -76,7 +76,7 @@ def thanks(request, redirect_url=settings.LOGIN_REDIRECT_URL):
         profile.oauth_token = authorized_tokens['oauth_token']
         profile.oauth_secret = authorized_tokens['oauth_token_secret']
         profile.screen_name = authorized_tokens['screen_name']
-        profile.user_id = authorized_tokens['user_id']
+        profile.twitter_user_id = authorized_tokens['user_id']
         profile.save()
 
     return HttpResponseRedirect(reverse(redirect_url))

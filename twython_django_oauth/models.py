@@ -12,4 +12,4 @@ class TwitterProfile(models.Model):
     oauth_token = models.CharField(max_length=200)
     oauth_secret = models.CharField(max_length=200)
     screen_name = models.CharField(max_length=200)
-    user_id = models.IntegerField(unique=True)
+    twitter_user_id = models.IntegerField(unique=True)
