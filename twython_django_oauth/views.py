@@ -73,6 +73,12 @@ def thanks(request, redirect_url=settings.LOGIN_REDIRECT_URL):
         profile.user = user
         profile.oauth_token = authorized_tokens['oauth_token']
         profile.oauth_secret = authorized_tokens['oauth_token_secret']
+
+        print 'authorized_tokens[screen_name]: %s' % authorized_tokens['screen_name']
+        print 'authorized_tokens[user_id] %s' % authorized_tokens['user_id']
+
+        # profile.twitter_name = authorized_tokens['screen_name']
+        # profile.twitter_id = authorized_tokens['user_id']
         profile.save()
         print 'saved profile?'
     except:
